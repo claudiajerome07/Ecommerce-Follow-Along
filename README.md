@@ -46,4 +46,19 @@ Began by installing these packages and initialising project:
 4. Implementing an Error Handler.
     Set up middleware to handle errors across the application by creating file named ErrorHandler.
 
+## Milestone 4:
+1. Creating the User Model:
+    1. Define a schema for users in the database using Mongoose.
+    2. Include essential fields such as name, email, password, and any other relevant details for user management.
+
+2. Setting up Controllers for User-Related Operations:
+    1. Example endpoints may include creating a user, fetching user details, updating user information, and deleting a user.
+    2. Controllers will act as a bridge between routes and the database, ensuring clean and organized code
+
+3. Enabling File Uploads Using Multer
+    1. Use Multer, a middleware for handling multipart data, to enable file uploads in the application.
+    2. Configure it to upload files like user profile pictures or other assets, ensuring proper storage and file validation.
+    3. Handle potential errors, such as invalid file types or upload size limits, for a smooth user experience.
+
+
 Happy coding ❤️.
