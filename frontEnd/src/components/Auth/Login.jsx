@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function LoginPage() {
     const [details, setdetails] = useState({
@@ -61,6 +62,9 @@ function LoginPage() {
                         className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
                         Login
                     </button>
+                    <p>
+                        Don't have an account ? <Link to={'/Signup'}>SignUp</Link>
+                    </p>
                 </form>
             </div>
         </div>
