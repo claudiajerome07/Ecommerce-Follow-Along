@@ -69,10 +69,24 @@ Began by installing these packages and initialising project:
 
 2. Created a validation page:
     1. created a separate component to validate user input.
-    2. Implemented form validation using Regex to ensure proper data entry and point out errors.\
+    2. Implemented form validation using Regex to ensure proper data entry and point out errors.
 
 3. Setted up react-router for the exisiting app:
     1. Implemented React Router into the application to enable navigation between pages.
     2. Configured routes for the SignUp and Validation pages.
 
+## Milstone 6:
+1. Generate a JWT Token at Signup:
+    1. Install the jsonwebtoken library.
+2. Create a Verification Link
+
+    1. Generate a verification link containing the token.
+3. Configure Nodemailer to Send Emails
+
+    1. Install Nodemailer.
+    2. Use the sendVerificationEmail function to send the verification link to the user's email address.
+
+4. Create an Endpoint to Verify the Token
+
+    1. Endpoint to verify the token and activate the user.
 Happy coding ❤️.
