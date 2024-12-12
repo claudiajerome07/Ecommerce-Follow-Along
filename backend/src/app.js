@@ -8,7 +8,9 @@ const express=require('express');
 
 
 const app=express();
-const userRouter=require('./routes/user.route')
+const userRouter=require('./routes/user.route.js')
+
+app.use(express.json())
 
 app.get('/',(req,res)=>{
     return res.send('heyy there!')
@@ -16,7 +18,7 @@ app.get('/',(req,res)=>{
 
 // app.use('/user')
 
-app.get('/user',userRouter)
+app.use('/user',userRouter)
 
 //connecting db and running serve
 module.exports=app;
