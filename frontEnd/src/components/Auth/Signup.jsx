@@ -21,7 +21,8 @@ function SignupForm() {
         console.log(data)
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         const NameValid=Validation.validName(data.name)
         const Passwordvalid =Validation.validPW(data.password)
         const EmailValid =Validation.validemail(data.email)
@@ -108,6 +109,7 @@ function SignupForm() {
                     </div>
 
                     {/* Submit Button */}
+                    <p className="text-red">{err}</p>
                     <div>
                         <button
                             type="submit"
