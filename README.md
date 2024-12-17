@@ -89,4 +89,21 @@ Began by installing these packages and initialising project:
 4. Create an Endpoint to Verify the Token
 
     1. Endpoint to verify the token and activate the user.
+
+## Milestone 7:
+1. Signup:
+    1. Check for Existing User:
+        - If the user is already in the database, return a message prompting for direct login.
+    2. User Creation:
+        - If not present, hash the password using bcrypt.js.
+        - Create a new user and store the name, email, and password in the database.
+
+2. Login:
+    1. Validation:
+        - Check if the user exists in the database and validate the password.
+        - If valid, create a token and send it as cookies.
+        - If invalid, return a message prompting the user to sign up first.
+
+
+
 Happy coding ❤️.
