@@ -1,6 +1,8 @@
-import LoginPage from "./components/Auth/Login";
-import SignupForm from "./components/Auth/Signup";
 import {Routes, Route} from 'react-router-dom';
+import HomePage from './Pages/HomePage'
+import Signup from './Pages/Signup'
+import Login from './Pages/login';
+
 
 
 function App() {
@@ -10,9 +12,9 @@ function App() {
       {/* <SignupForm /> */}
       <h1>Follow-along application</h1>
       <Routes>
-        <Route path='/' />
-        <Route path="/Signup" element={<SignupForm/>} />
-        <Route path="/Login" element={<LoginPage/>} />
+        <Route path='/' element={<HomePage/>}/>
+        <Route path="/Signup" element={<Signup/>} />
+        <Route path="/Login" element={<Login/>} />
       </Routes>
     </>
   )

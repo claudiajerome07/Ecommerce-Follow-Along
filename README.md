@@ -89,4 +89,18 @@ Began by installing these packages and initialising project:
 4. Create an Endpoint to Verify the Token
 
     1. Endpoint to verify the token and activate the user.
+
+## Milestone 8:
+
+1. Create the Card Component
+    1. Build a reusable card component.
+    2. Accept props for product details such as:
+        - Name
+        - Image
+        - Price
+
+2. Design the Homepage Layout
+    1. Implement a grid or flexbox layout.
+    2. Arrange multiple cards neatly for an aesthetically pleasing homepage display.
+    
 Happy coding ❤️.
