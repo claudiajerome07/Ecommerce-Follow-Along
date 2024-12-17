@@ -109,7 +109,7 @@ function SignupForm() {
                     </div>
 
                     {/* Submit Button */}
-                    <p className="text-red">{err}</p>
+                    {err && <p className="text-red-500">{err}</p>}
                     <div>
                         <button
                             type="submit"

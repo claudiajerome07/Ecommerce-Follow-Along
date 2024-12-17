@@ -1,10 +1,10 @@
 const ErrorHandler = require('../utilis/ErrorHandler.js')
 const usermodel = require('../model/user_model.js')
 const transporter = require('../utilis/sendMail.js')
-const jwt=require('jsonwebtoken')
-
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 require('dotenv').config({
-    path:'..config/.env'
+    path: '..config/.env'
 })
 
 async function CreateUser(req, res) {
@@ -15,12 +15,12 @@ async function CreateUser(req, res) {
     });
 
     if (checkUserpresent) {
-        const error= new ErrorHandler('Already Present in DB',400)
+        const error = new ErrorHandler('Already Present in DB', 400)
 
         return res.status(404).send({
             message: error.message,
             status: error.statuscode,
-            success:false,
+            success: false,
         })
 
     }
@@ -31,7 +31,7 @@ async function CreateUser(req, res) {
         password: password,
     })
 
-    const data={
+    const data = {
         Name,
         email,
         password,
@@ -40,7 +40,7 @@ async function CreateUser(req, res) {
     //1. we have to send mail to user for verification as http://localhost:5173/activation/{token}
     //2. we have to send the mail as link to user
     //3. when the user click the link user have to be directed to activation page
-    const token=generateToken(data)
+    const token = generateToken(data)
     await transporter.sendMail({
         to: 'claudiajerome07@gmail.com',
         from: 'claudiajerome9a@gmail.com',
@@ -54,12 +54,12 @@ async function CreateUser(req, res) {
 
 }
 
-const generateToken=(data)=>{
-    const token=jwt.sign({name:data.name,email:data.email},process.env.SECRET_KEY)
+const generateToken = (data) => {
+    const token = jwt.sign({ name: data.name, email: data.email }, process.env.SECRET_KEY)
     return token
 }
 
-async function verifyUserController(req, res){
+async function verifyUserController(req, res) {
     const { token } = req.params
     try {
         if (verifyUser(token)) {
@@ -81,7 +81,62 @@ const verifyUser = () => {
     }
 }
 
-module.exports = { CreateUser , verifyUserController}
+const signup = async (req, res) => {
+    const { name, email, password } = req.body
+    try {
+        const checkUserPresentDB = await usermodel.findOne({ email: email });
+        if (checkUserPresentDB) {
+            return res.status(403).send({ message: "User Already Present" })
+        }
+        bcrypt.hash(password, 10, async function (err, hashed) {
+            try {
+                if(err){
+                    return res.status(403).send({message:err.message})
+                }
+                await usermodel.create({
+                    Name:name,
+                    email,
+                    password:hashed
+                })
+
+                return res.status(201).send({message:'User created Successfully!'})
+            }
+            catch (er) {
+                return res.status(500).send({ message: er.message })
+            }
+        })
+        
+
+    } 
+    catch (err) {
+        return res.status(500).send({ message: err.message })
+    }
+}
+
+const login = async (req, res) => {
+    const { email, password } = req.body
+    try {
+
+        const checkUserPresentDB = await usermodel.findOne({ email: email })
+        bcrypt.compare(password, checkUserPresentDB.password, function (err, result) {
+            if (err) {
+                return res.status(403).send({ message: err.message,success:false })
+            }
+            let data = {
+                id: checkUserPresentDB._id,
+                email,
+                password: checkUserPresentDB.password
+            }
+            const token = generateToken(data)
+            return res.status(200).cookie('token', token).send({ message: "User logged in Successfully!", success: true })
+        })
+       
+    } catch (err) {
+        return res.status(403).send({message:err.message,success:false})
+    }
+}
+
+module.exports = { CreateUser, verifyUserController, signup, login }
 
 
 //find gives list of object
