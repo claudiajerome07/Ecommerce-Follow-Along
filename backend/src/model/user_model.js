@@ -7,12 +7,12 @@ const userSchema = new mongoose.Schema({
     Name: { type: String, require: [true, 'plaese enter the name!'] },
     email: {
         type: String,
-        require: [true, 'Please eneter email!'],
+        required: [true, 'Please eneter email!'],
         unique: [true, 'please enter unique Email id']
     },
     password: {
         type: String,
-        require: [true, 'Please enter the password!']
+        required: [true, 'Please enter the password!']
     },
     address: [
         { city: String },

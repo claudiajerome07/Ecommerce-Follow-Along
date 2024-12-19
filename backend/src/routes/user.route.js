@@ -5,6 +5,8 @@ const upload = require('../middlewares/multer.js')
 // const jwt=require('jasonwebtoken')
 const router = express.Router();
 
+const productrouter=require('./product.route.js')
+
 router.post('/create-user', upload.single('file'), CreateUser)
 router.get('/activation/:token',)
 

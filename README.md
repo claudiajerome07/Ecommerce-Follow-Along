@@ -119,4 +119,15 @@ Began by installing these packages and initialising project:
     1. Implement a grid or flexbox layout.
     2. Arrange multiple cards neatly for an aesthetically pleasing homepage display.
 
+## Milestone 9:
+
+1. Design and implement the product form.
+
+2. Enable functionality to accept multiple product images.
+
+3. Save the form data to the database.
+
+4. Display the saved product details on the product home page.
+
+
 Happy coding ❤️.
