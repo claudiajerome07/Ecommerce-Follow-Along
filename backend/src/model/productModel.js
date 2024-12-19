@@ -12,7 +12,7 @@ const SchemeObj={
     },
     rating:{
         type:Number,
-        required:true
+        default:1
     },
     discountPrice:{
         type:Number,
@@ -42,3 +42,5 @@ const SchemeObj={
 
 const productSchema=new mongoose.Schema(SchemeObj,{versionKey: false})
 const productModel=mongoose.model('Product',productSchema)
+
+module.exports=productModel
