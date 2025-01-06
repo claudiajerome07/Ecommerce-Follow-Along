@@ -1,46 +1,46 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 
-const SchemeObj={
+const SchemeObj = {
 
-    title:{
-        type:String,
-        required:true
+    title: {
+        type: String,
+        required: true
     },
-    description:{
-        type:String,
-        required:true
+    description: {
+        type: String,
+        required: true
     },
-    rating:{
-        type:Number,
-        default:1
+    rating: {
+        type: Number,
+        default: 1
     },
-    discountPrice:{
-        type:Number,
-        required:true
+    discountPrice: {
+        type: Number,
+        required: true
     },
-    originalPrice:{
-        type:Number,
-        require:true
+    originalPrice: {
+        type: Number,
+        require: true
     },
-    quantity:{
-        type:Number,
-        required:true,
-        default:1
+    quantity: {
+        type: Number,
+        required: true,
+        default: 1
     },
-    category:{
-        type:String,
-        required:true,
-        enum:['male','female','kids']
+    category: {
+        type: String,
+        required: true,
+        enum: ['male', 'female', 'kids']
     },
-    Imgs:{
-        type:String,
-        require:true,
-        default:'https://images.pexels.com/photos/953864/pexels-photo-953864.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-    }
+    Imgs: [{
+        type: String,
+        require: true,
+        default: 'https://images.pexels.com/photos/953864/pexels-photo-953864.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+    }]
 
 }
 
-const productSchema=new mongoose.Schema(SchemeObj,{versionKey: false})
-const productModel=mongoose.model('Product',productSchema)
+const productSchema = new mongoose.Schema(SchemeObj, { versionKey: false })
+const productModel = mongoose.model('Product', productSchema)
 
-module.exports=productModel
+module.exports = productModel
