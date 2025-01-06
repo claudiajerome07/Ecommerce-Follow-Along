@@ -55,7 +55,7 @@ function ProductEntryPage(){
 
         axios.post('http://loaclhost:8080/product/create-product', formdata, {
             headers: {
-                'Content-Type': 'multi-part/form-data'
+                'Content-Type': 'multipart/form-data'
             }
         })
 
