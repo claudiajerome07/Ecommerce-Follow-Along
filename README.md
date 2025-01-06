@@ -143,5 +143,17 @@ Began by installing these packages and initialising project:
 
     2. Validate and save the product details to MongoDB.
 
+## Milestone 11
+
+1. Create a GET endpoint in the backend server that connects to the database, retrieves the required data (e.g., products), and sends it as a response to the client in JSON format.
+
+2. Connect to the database.
+
+3. Write a query to fetch the desired data from the database.
+
+4. Handle any potential errors during the database operation gracefully.
+
+5. Structure the response data and send it to the client using res.json().
+
 
 Happy coding ❤️.
