@@ -156,4 +156,3 @@ Began by installing these packages and initialising project:
 5. Structure the response data and send it to the client using res.json().
 
 
-Happy coding ❤️.
