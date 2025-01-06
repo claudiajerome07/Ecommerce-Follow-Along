@@ -27,7 +27,7 @@ function Card({ title, index,image,originalPrice,discountedPrice,description ,ra
 
         {/* Rating */}
         <div className="flex items-center mb-4">
-          <span className="ml-2 text-sm text-gray-600">(4.5)</span>
+          <span className="ml-2 text-sm text-gray-600">{rating}</span>
         </div>
 
         {/* Price Section */}

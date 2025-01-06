@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 import Card from '../components/ProductCard/Card';
 import axios from "axios";
 
-function HomePage(){
-    const [data,setdata]=useState()
-    const fetchProduct=async()=>{
+function HomePage() {
+    const [data, setdata] = useState([])
+    const fetchProduct = async () => {
         const response = await axios.get(
             'http://localhost:8080/product/get-products'
         )
-        setdata(response.data)
-        // console.log(response)
+        setdata(response.data.data)
+        console.log(response)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('clicked');
-        const callhandler=async()=>{
-            const data=await fetchProduct()
+        const callhandler = async () => {
+            const data = await fetchProduct()
         }
         callhandler()
-    },[])
+    }, [])
 
     console.log(data)
 
@@ -26,16 +26,16 @@ function HomePage(){
         <>
             <h1 className="text-center">'Welcome to Home Page for Follow along'</h1>
             <div className="grid grid-cols-3">
-                {data.map((ele, index) => {
+                {data?.map((ele, index) => {
                     return (
                         <div style={{ margin: 'auto' }}>
-                            <Card title={ele.title} 
-                            image={ele.images[0]?ele.images[0]: 'Product Image missing'} 
-                            Index={index}
-                            description={ele.description}
-                            originalPrice={ele.originalPrice}
-                            discountedPrice={ele.discountedPrice}
-                             />;
+                            <Card title={ele.title}
+                                image={ele.Imgs[0] ? ele.Imgs[0] : 'Product Image missing'}
+                                Index={index}
+                                description={ele.description}
+                                originalPrice={ele.originalPrice}
+                                discountedPrice={ele.discountedPrice}
+                            />;
                         </div>
                     );
                 })}
