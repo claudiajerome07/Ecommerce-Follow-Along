@@ -1,9 +1,11 @@
-const express=require('express')
+const express = require('express')
 const multer = require('multer')
-const upload = multer({dest: 'temp-uploads/'})
-const router=express.Router()
-const {createProductController}=require('../controller/Product.Controller.js')
+const upload = multer({ dest: 'temp-uploads/' })
+const router = express.Router()
+const { createProductController, getProductDataController } = require('../controller/Product.Controller.js')
 
-router.post('/create-product',upload.array('files',5), createProductController)
+router.post('/create-product', upload.array('files', 5), createProductController)
 
-module.exports=router
+router.get('/get-products', getProductDataController);
+
+module.exports = router
