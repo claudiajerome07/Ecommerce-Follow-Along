@@ -167,5 +167,20 @@ Began by installing these packages and initialising project:
 
 5. Display the products dynamically using the ProductCard component.
 
+## Milestone 13:
+
+1. A new API endpoint to handle data updates in MongoDB.
+2. Receives data via HTTP requests and updates the corresponding record in the database.
+3. Adds an edit button to each product card.
+4. Clicking the edit button opens a form pre-filled with the current product data.
+5. Allows users to edit the form and save changes.
+
+## Milestone 14:
+
+1. A new API endpoint to handle deletion of a product from MongoDB.
+2. Accepts the product ID as a parameter.
+3. Adds a delete button to each product card.
+4. Sends a request to the backend to delete the product when the delete button is clicked.
+
 ** thank you **
 ~
