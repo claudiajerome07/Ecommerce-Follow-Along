@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== 'PRODUCTION') {
 }
 
 const express=require('express');
+const cors=require('cors')
 
 
 const app=express();
@@ -12,6 +13,7 @@ const userRouter=require('./routes/user.route.js')
 const productRouter=require('./routes/product.route.js')
 
 app.use(express.json())
+app.use(cors())
 
 app.get('/',(req,res)=>{
     return res.send('heyy there!')
@@ -21,5 +23,5 @@ app.get('/',(req,res)=>{
 
 app.use('/user',userRouter)
 app.use('/product',productRouter)
-//connecting db and running serve
+//connecting db and running server 
 module.exports=app;

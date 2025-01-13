@@ -155,4 +155,17 @@ Began by installing these packages and initialising project:
 
 5. Structure the response data and send it to the client using res.json().
 
+## Milestone 12:
 
+1. Create an endpoint that retrieves all products along with the user's email and sends it as a JSON response to the frontend.
+
+2. Connect to the database to fetch product data.
+
+3. Use axios or fetch to call the API.
+
+4. Store the response (products and user email) in the state.
+
+5. Display the products dynamically using the ProductCard component.
+
+** thank you **
+~
