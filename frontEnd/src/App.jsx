@@ -1,10 +1,8 @@
-
-
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Homepage.jsx';
-
-import Signup from './Pages/Signup'
-import Login from './Pages/login';
+import SingleProductPage from './pages/SingleProductPage.jsx';
+import Signup from './pages/Signup'
+import Login from './pages/login';
 import UpdateForm from './pages/UpdateForm';
 import ProductEntryPage from './pages/ProductEntryPage';
 
@@ -21,12 +19,13 @@ function App() {
       <Navbar/>
       <Routes>
 
-        <Route path='/homepage' element={<HomePage />} />
+        <Route path='/' element={<HomePage />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
         <Route path='/product-entry-page' element={<ProductEntryPage />} />
 
         <Route path='/update-products/:id' element={<UpdateForm />} />
+        <Route path="/product-details/:id" element={<SingleProductPage/>}/>
       </Routes>
     </>
   )

@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 function UpdateForm() {
 
-    const {id}=useParams()
+    const { id } = useParams()
 
     // console.log(id)
     const [formdata, setformdata] = useState({
@@ -35,7 +35,7 @@ function UpdateForm() {
     }
 
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
 
         e.preventDefault()
 
@@ -68,21 +68,21 @@ function UpdateForm() {
         console.log(formdataBody)
 
 
-        let requestData= await axios.put(`http://localhost:8080/product/update-products/${id}`, formdataBody, {
+        let requestData = await axios.put(`http://localhost:8080/product/update-products/${id}`, formdataBody, {
 
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
 
-        .then((res)=>{
-            console.log(res.data)
-            return res;
-        })
-        .catch((err)=>{
-            console.log('Error',err)
-            return err
-        })
+            .then((res) => {
+                console.log(res.data)
+                return res;
+            })
+            .catch((err) => {
+                console.log('Error', err)
+                return err
+            })
 
 
     }
@@ -113,8 +113,8 @@ function UpdateForm() {
     }
 
 
-    useEffect(()=>{
-        const getDataForId=async()=>{
+    useEffect(() => {
+        const getDataForId = async () => {
             const singleData = await axios.get(`http://localhost:8080/product/get-single/${id}`)
             console.log(singleData)
             setformdata(singleData.data.data)
@@ -122,7 +122,7 @@ function UpdateForm() {
         }
         getDataForId()
 
-    },[id])
+    }, [id])
 
 
     return (
@@ -154,7 +154,7 @@ function UpdateForm() {
                 <div>
                     <label htmlFor="">Stock Quantity</label>
                     <br />
-                    <input type="number" name="stockQuantity" onChange={handleChange} value={formdata.stockQuantity} placeholder="enter stock quantity" />
+                    <input type="number" name="stockQuantity" onChange={handleChange} value={formdata.quantity} placeholder="enter stock quantity" />
                 </div>
 
                 <div>
