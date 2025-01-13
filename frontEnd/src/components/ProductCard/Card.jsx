@@ -1,10 +1,15 @@
-function Card({ title, index,image,originalPrice,discountedPrice,description ,rating}) {
+import { Link } from "react-router-dom";
+import axios from "axios";
+
+function Card({ title, index, image, originalPrice, discountedPrice, description, rating, id, handleDelete }) {
+
+
   return (
     <div className="w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
       {/* Image Container */}
       <div className="relative">
         <img
-                  src={image}
+          src={image}
           alt="Product"
           className="w-full h-48 object-cover"
         />
@@ -41,10 +46,14 @@ function Card({ title, index,image,originalPrice,discountedPrice,description ,ra
           <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
             Add to Cart
           </button>
-          <button
-            className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors duration-200"
-            onClick={() => handleDelete(id)}
-          >
+          <Link to={`/update-products/${id}`}>
+            <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+              Update
+            </button>
+          </Link>
+
+          <button onClick={() => handleDelete(id)} className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+
             Delete
           </button>
         </div>
@@ -53,4 +62,4 @@ function Card({ title, index,image,originalPrice,discountedPrice,description ,ra
   );
 }
 
-export default Card;
+export default Card

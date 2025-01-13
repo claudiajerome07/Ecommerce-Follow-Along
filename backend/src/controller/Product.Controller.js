@@ -2,14 +2,16 @@ const fs = require('fs') //file system
 const cloudinary = require('../utilis/cloudinary.js')
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/' });
-const ProductModel = require('../model/productModel.js')
+const ProductModel = require('../model/productModel.js');
+// const productModel = require('../model/productModel.js');
+
 
 const createProductController = async (req, res) => {
     const { title,
         description,
-        discountPrice,
+        discountedPrice,
         originalPrice,
-        stockQuantity,
+        quantity,
         category,
         rating } = req.body
     try {
@@ -27,9 +29,9 @@ const createProductController = async (req, res) => {
         const StoreproductDetails = await ProductModel.create({
             title,
             description,
-            discountPrice,
+            discountedPrice,
             originalPrice,
-            quantity: stockQuantity,
+            quantity,
             category,
             rating,
             Imgs: dataImgs
@@ -41,15 +43,15 @@ const createProductController = async (req, res) => {
             dataImgs,
             StoreproductDetails,
         })
-    } catch (err) {
+    } catch (error) {
 
-        if (err instanceof multer.MulterError) {
+        if (error instanceof multer.MulterError) {
             return res.status(400).send({
-                message: 'Multer error please send inage less than 5',
+                message: 'Multer error please send image less than 5',
                 success: false
             })
         }
-        res.status(500).send({ message: err.message, success: false })
+        res.status(500).send({ message: error, success: false })
     }
 }
 
@@ -132,6 +134,4 @@ const deleteSingleProductController = async (req, res) => {
 }
 
 
-module.exports = { createProductController, getProductDataController, updateProductController, getSingleProductDocumentController, deleteSingleProductController }
-
-
+module.exports = { createProductController, getProductDataController, updateProductController, getSingleProductDocumentController, deleteSingleProductController };

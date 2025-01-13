@@ -2,7 +2,7 @@ const express = require('express')
 const multer = require('multer')
 const upload = multer({ dest: 'temp-uploads/' })
 const router = express.Router()
-const { createProductController, getProductDataController,updateProductController, getSingleProductDocumentController, deleteSingleProductController } = require('../controller/Product.Controller.js')
+const { createProductController, getProductDataController, updateProductController, getSingleProductDocumentController, deleteSingleProductController } = require('../controller/Product.Controller.js')
 
 router.post('/create-product', upload.array('files', 5), createProductController)
 
@@ -14,5 +14,4 @@ router.get('/get-single/:id', getSingleProductDocumentController)
 
 router.delete('/:id', deleteSingleProductController)
 
-
-module.exports = router
+module.exports = router;
