@@ -30,7 +30,7 @@ function HomePage() {
 
     return (
         <>
-            <h1 className="text-center">'Welcome to Home Page for Follow along'</h1>
+            <h1 className="text-center">'Welcome to Home Page for Follow along!'</h1>
             <div className="grid grid-cols-3">
                 {data?.map((ele, index) => {
                     return (
