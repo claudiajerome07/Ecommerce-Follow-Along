@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
 function Card({ title, index, image, originalPrice, discountedPrice, description, rating,id ,handleDelete}) {
 
   
+
   return (
     <div className="w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
       {/* Image Container */}
@@ -52,6 +54,7 @@ function Card({ title, index, image, originalPrice, discountedPrice, description
             </button>
           </Link>
 
+
           <button onClick={() => handleDelete(id)}  className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
             
             Delete
@@ -62,4 +65,4 @@ function Card({ title, index, image, originalPrice, discountedPrice, description
   );
 }
 
-export default Card;
+export default Card

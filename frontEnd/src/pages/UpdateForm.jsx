@@ -8,7 +8,9 @@ import { useParams } from "react-router-dom";
 
 
 function UpdateForm() {
+
     const {id}=useParams()
+
     // console.log(id)
     const [formdata, setformdata] = useState({
         title: '',
@@ -32,7 +34,9 @@ function UpdateForm() {
 
     }
 
+
     const handleSubmit = async(e) => {
+
         e.preventDefault()
 
         console.log(formdata)
@@ -63,11 +67,14 @@ function UpdateForm() {
 
         console.log(formdataBody)
 
+
         let requestData= await axios.put(`http://localhost:8080/product/update-products/${id}`, formdataBody, {
+
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
+
         .then((res)=>{
             console.log(res.data)
             return res;
@@ -76,6 +83,7 @@ function UpdateForm() {
             console.log('Error',err)
             return err
         })
+
 
     }
 
@@ -104,6 +112,7 @@ function UpdateForm() {
 
     }
 
+
     useEffect(()=>{
         const getDataForId=async()=>{
             const singleData = await axios.get(`http://localhost:8080/product/get-single/${id}`)
@@ -112,7 +121,9 @@ function UpdateForm() {
             setImgs(singleData.data.data.imgs)
         }
         getDataForId()
+
     },[id])
+
 
     return (
         <div className="flex justify-center items-center border border-black h-screen">
@@ -172,4 +183,6 @@ function UpdateForm() {
 
 }
 
+
 export default UpdateForm;
+
