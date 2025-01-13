@@ -167,5 +167,5 @@ Began by installing these packages and initialising project:
 
 5. Display the products dynamically using the ProductCard component.
 
-** thsnk you **
+** thank you **
 ~

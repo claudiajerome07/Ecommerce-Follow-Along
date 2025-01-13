@@ -70,13 +70,17 @@ const updateProductController = async (req, res) => {
     const { id } = req.params
     try {
 
+
         const checkifproductExists = await ProductModel.findOne({ _id: id })
+
 
         if (!checkifproductExists) {
             return res.status(404).send({ message: 'Product not found' })
         }
 
+
         const ImgArray = req.files && req.files.map(async (singleFile, index) => {
+
             return cloudinary.uploader.upload(singleFile.path, {
                 folder: 'uploads'
             })
@@ -89,8 +93,10 @@ const updateProductController = async (req, res) => {
         const Imagedata = req.files && (await Promise.all(ImgArray))
         const UpdatedImages = req.files ? Imagedata : req.body.images;
         const findAndupdate = await ProductModel.findByIdAndUpdate(
+
             { _id: id },
             { title, description, discountedPrice, originalPrice, quantity, category, rating, images: UpdatedImages },
+
             { new: true }
         )
 
@@ -100,7 +106,25 @@ const updateProductController = async (req, res) => {
     }
 }
 
-const getSingleProductDocumentController = async (req, res) => {
+
+
+const getSingleProductDocumentController=async(req,res)=>{
+    const {id}=req.params
+
+    try{
+        const data=await ProductModel.findOne({_id:id})
+
+        if(!data){
+            return res.status(404).send({message:'Product not found'})
+        }
+        return res.status(200).send({message:"Product Fetched Successfully",data,success:true})
+    }catch(err){
+        return res.status(200).send({message:err.message})
+    }
+}
+
+const deleteSingleProductController = async (req, res) => {
+
     const { id } = req.params
 
     try {
@@ -109,6 +133,7 @@ const getSingleProductDocumentController = async (req, res) => {
         if (!data) {
             return res.status(404).send({ message: 'Product not found' })
         }
+
         return res.status(200).send({ message: "Product Fetched Successfully", data, success: true })
     } catch (err) {
         return res.status(200).send({ message: err.message })
@@ -134,4 +159,7 @@ const deleteSingleProductController = async (req, res) => {
 }
 
 
-module.exports = { createProductController, getProductDataController, updateProductController, getSingleProductDocumentController, deleteSingleProductController };
+module.exports = { createProductController, getProductDataController,updateProductController,getSingleProductDocumentController,deleteSingleProductController }
+
+
+

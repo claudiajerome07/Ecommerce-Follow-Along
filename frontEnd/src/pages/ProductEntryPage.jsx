@@ -123,7 +123,7 @@ function ProductEntryPage(){
                 <div>
                     <label htmlFor="">rating of the product</label>
                     <br />
-                    <input type="number" name="rating" onChange={handleChange} value={formdata.rating} placeholder="rating of the product" />
+                    <input type="number" name="rating"  value={formdata.rating} placeholder="rating of the product" />
                 </div>
                 
                 {error && <p>{error}</p>}
