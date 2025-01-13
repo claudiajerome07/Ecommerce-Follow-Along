@@ -9,18 +9,24 @@ function HomePage() {
             'http://localhost:8080/product/get-products'
         )
         setdata(response.data.data)
-        console.log(response)
+        // console.log(response)
     }
 
     useEffect(() => {
         console.log('clicked');
         const callhandler = async () => {
-            const data = await fetchProduct()
+            await fetchProduct()
         }
         callhandler()
     }, [])
 
-    console.log(data)
+    // console.log(data)
+    const handleDelete = async (id) => {
+        console.log('id', id);
+        const data = await axios.delete(`http://localhost:8080/product/${id}`);
+        setdata(data.data.data);
+    };
+
 
     return (
         <>
@@ -31,11 +37,15 @@ function HomePage() {
                         <div style={{ margin: 'auto' }}>
                             <Card title={ele.title}
                                 image={ele.Imgs[0] ? ele.Imgs[0] : 'Product Image missing'}
-                                Index={index}
+                                index={index}
                                 description={ele.description}
+                                stockPrice={ele.stockPrice}
                                 originalPrice={ele.originalPrice}
                                 discountedPrice={ele.discountedPrice}
-                            />;
+                                rating={ele.rating}
+                                id={ele._id}
+                                handleDelete={handleDelete}
+                            />
                         </div>
                     );
                 })}
