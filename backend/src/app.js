@@ -23,5 +23,5 @@ app.get('/',(req,res)=>{
 
 app.use('/user',userRouter)
 app.use('/product',productRouter)
-//connecting db and running serve
+//connecting db and running server 
 module.exports=app;
