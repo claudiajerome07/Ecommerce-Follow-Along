@@ -41,6 +41,12 @@ function Card({ title, index,image,originalPrice,discountedPrice,description ,ra
           <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
             Add to Cart
           </button>
+          <button
+            className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors duration-200"
+            onClick={() => handleDelete(id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>
