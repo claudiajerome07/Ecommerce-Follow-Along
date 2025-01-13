@@ -123,22 +123,6 @@ const getSingleProductDocumentController=async(req,res)=>{
     }
 }
 
-const deleteSingleProductController = async (req, res) => {
-
-    const { id } = req.params
-
-    try {
-        const data = await ProductModel.findOne({ _id: id })
-
-        if (!data) {
-            return res.status(404).send({ message: 'Product not found' })
-        }
-
-        return res.status(200).send({ message: "Product Fetched Successfully", data, success: true })
-    } catch (err) {
-        return res.status(200).send({ message: err.message })
-    }
-}
 
 const deleteSingleProductController = async (req, res) => {
     const { id } = req.params
