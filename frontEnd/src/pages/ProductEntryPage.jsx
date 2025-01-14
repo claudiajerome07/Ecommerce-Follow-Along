@@ -1,16 +1,16 @@
-import React,{ useState }  from "react";
+import React, { useState } from "react";
 import axios from 'axios'
 
 
 
-function ProductEntryPage(){
+function ProductEntryPage() {
 
     const [formdata, setformdata] = useState({
         title: '',
         description: '',
         discountedPrice: 0,
         originalPrice: 0,
-        stockQuantity: 0,
+        quantity: 0,
         category: '',
         rating: 0
 
@@ -33,32 +33,39 @@ function ProductEntryPage(){
         console.log(formdata)
         // console.log(ImageArray)
 
-        const { title, description, discountedPrice, originalPrice, stockQuantity, category, rating } = formdata
+        const { title, description, discountedPrice, originalPrice, quantity, category, rating } = formdata
 
-        if (title.length <= 0 || description.length <= 0 || discountedPrice <= 0 || originalPrice <= 0 || stockQuantity <= 0 || category.length <= 0) {
+        if (title.length <= 0 || description.length <= 0 || discountedPrice <= 0 || originalPrice <= 0 || quantity <= 0 || category.length <= 0) {
             return setError('Enter the information inside the fields...')
         }
 
         let formdataBody = new FormData();
         formdataBody.append('title', title)
         formdataBody.append('description', description)
-        formdataBody.append('discounted price', discountedPrice)
-        formdataBody.append('original price', originalPrice)
-        formdataBody.append('quantity', stockQuantity),
+        formdataBody.append('discountedPrice', discountedPrice)
+        formdataBody.append('originalPrice', originalPrice)
+        formdataBody.append('quantity', quantity),
             formdataBody.append('rating', rating)
+        formdataBody.append('category', category)
 
-        imgs.map((element) => {
-            formdataBody('filepath', ele)
+
+        imgs.map((element, index) => {
+            formdataBody.append(`files`, element)
         })
 
         console.log(formdataBody)
 
-        axios.post('http://loaclhost:8080/product/create-product', formdata, {
+        axios.post('http://localhost:8080/product/create-product', formdataBody, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
-
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     const handleChange = (e) => {
@@ -75,14 +82,14 @@ function ProductEntryPage(){
         // console.log(setformdata)
 
     }
-    
-    return(
+
+    return (
         <div className="flex justify-center items-center border border-black h-screen">
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="">Product title</label>
-                    <br/>
-                    <input type="text" onChange={handleChange} value={formdata.title} name="title" placeholder="Enter product title"/>
+                    <br />
+                    <input type="text" onChange={handleChange} value={formdata.title} name="title" placeholder="Enter product title" />
                 </div>
                 <div>
                     <label htmlFor="">Product description</label>
@@ -101,11 +108,11 @@ function ProductEntryPage(){
                     <br />
                     <input type="number" name="originalPrice" onChange={handleChange} value={formdata.originalPrice} placeholder="Original Price" />
                 </div>
-                
+
                 <div>
                     <label htmlFor="">Stock Quantity</label>
                     <br />
-                    <input type="number" name="StockQuantity" onChange={handleChange} value={formdata.stockQuantity} placeholder="enter stock quantity"/>
+                    <input type="number" name="quantity" onChange={handleChange} value={formdata.quantity} placeholder="enter stock quantity" />
                 </div>
 
                 <div>
@@ -119,13 +126,13 @@ function ProductEntryPage(){
                     <br />
                     <input type="text" name="category" onChange={handleChange} value={formdata.category} placeholder="enter the category" />
                 </div>
-                
+
                 <div>
                     <label htmlFor="">rating of the product</label>
                     <br />
-                    <input type="number" name="rating"  value={formdata.rating} placeholder="rating of the product" />
+                    <input type="number" name="rating" onChange={handleChange} value={formdata.rating} placeholder="rating of the product" />
                 </div>
-                
+
                 {error && <p>{error}</p>}
                 <button type="Submit" className="bg-blue-400 text-white px-5 py-1">Submit</button>
             </form>
