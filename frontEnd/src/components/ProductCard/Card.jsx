@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
+// import { Link, NavLink } from "react-router-dom";
 
 
 function Card({ title, index, image, originalPrice, discountedPrice, description, rating,id ,handleDelete}) {

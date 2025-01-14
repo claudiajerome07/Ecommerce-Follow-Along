@@ -15,7 +15,7 @@ const createProductController = async (req, res) => {
         category,
         rating } = req.body
     try {
-        const ImgArray = req.files.map((singleFile, index) => {
+        const ImgArray = req.files.map(async (singleFile, index) => {
             return cloudinary.uploader.upload(singleFile.path, {
                 folder: 'uploads'
             })
@@ -29,7 +29,7 @@ const createProductController = async (req, res) => {
         const StoreproductDetails = await ProductModel.create({
             title,
             description,
-            discountedPrice,
+             discountedPrice,
             originalPrice,
             quantity,
             category,
@@ -51,7 +51,7 @@ const createProductController = async (req, res) => {
                 success: false
             })
         }
-        res.status(500).send({ message: error, success: false })
+        res.status(500).send({ message: error.message, success: false })
     }
 }
 
@@ -66,60 +66,86 @@ const getProductDataController = async (req, res) => {
 }
 
 const updateProductController = async (req, res) => {
-    const { title, description, discountedPrice, originalPrice, quantity, category, rating } = req.body
-    const { id } = req.params
+    const {
+        title,
+        description,
+        rating,
+        discountedPrice,
+        originalPrice,
+        quantity,
+        category,
+    } = req.body;
+    const { id } = req.params;
+
     try {
+        const checkIfProductExists = await ProductModel.findOne({ _id: id });
+        // {
+        //   name:"xyz"
+        // } truthy
+
+        // {}  falsy
+        if (!checkIfProductExists) {
+            return res.status(404).send({ message: 'Product Not Found' });
+        }
+
+        const arrayImage =
+            req.files &&
+            req.files.map(async (singleFile, index) => {
+                return cloudinary.uploader
+                    .upload(singleFile.path, {
+                        folder: 'uploads',
+                    })
+                    .then((result) => {
+                        fs.unlinkSync(singleFile.path);
+                        return result.url;
+                    });
+            });
+        const Imagedata = req.files && (await Promise.all(arrayImage));
+        const UpdatedImages = req.files ? Imagedata : req.body.images;
+        const findAndUpdate = await ProductModel.findByIdAndUpdate(
+            { _id: id },
+            {
+                title,
+                description,
+                rating,
+                discountedPrice,
+                originalPrice,
+                quantity,
+                category,
+                images: UpdatedImages,
+            },
+            {
+                new: true,
+            }
+        );
+
+        console.log(findAndUpdate)
+        return res.status(201).send({
+            message: 'Document Updated Successfully',
+            success: true,
+            UpdatedResult: findAndUpdate,
+        });
+    } catch (er) {
+        console.log(er.message);
+        return res.status(500).send({ message: er.message, success: false });
+    }
+};
 
 
-        const checkifproductExists = await ProductModel.findOne({ _id: id })
 
 
-        if (!checkifproductExists) {
+const getSingleProductDocumentController = async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const data = await ProductModel.findOne({ _id: id })
+
+        if (!data) {
             return res.status(404).send({ message: 'Product not found' })
         }
-
-
-        const ImgArray = req.files && req.files.map(async (singleFile, index) => {
-
-            return cloudinary.uploader.upload(singleFile.path, {
-                folder: 'uploads'
-            })
-                .then((result) => {
-                    fs.unlinkSync(singleFile.path);
-                    return result.url;
-                })
-        })
-
-        const Imagedata = req.files && (await Promise.all(ImgArray))
-        const UpdatedImages = req.files ? Imagedata : req.body.images;
-        const findAndupdate = await ProductModel.findByIdAndUpdate(
-
-            { _id: id },
-            { title, description, discountedPrice, originalPrice, quantity, category, rating, images: UpdatedImages },
-
-            { new: true }
-        )
-
-        return res.status(201).send({ message: "Document updation successfull", success: true, updatedProduct: findAndupdate })
+        return res.status(200).send({ message: "Product Fetched Successfully", data, success: true })
     } catch (err) {
-        res.status(500).send({ message: err.message, success: false })
-    }
-}
-
-
-
-const getSingleProductDocumentController=async(req,res)=>{
-    const {id}=req.params
-
-    try{
-        const data=await ProductModel.findOne({_id:id})
-
-        if(!data){
-            return res.status(404).send({message:'Product not found'})
-        }
-        return res.status(200).send({message:"Product Fetched Successfully",data,success:true})
-    }catch(err){
-        return res.status(200).send({message:err.message})
+        return res.status(200).send({ message: err.message })
     }
 }
 
@@ -143,7 +169,7 @@ const deleteSingleProductController = async (req, res) => {
 }
 
 
-module.exports = { createProductController, getProductDataController,updateProductController,getSingleProductDocumentController,deleteSingleProductController }
+module.exports = { createProductController, getProductDataController, updateProductController, getSingleProductDocumentController, deleteSingleProductController }
 
 
 
