@@ -36,7 +36,8 @@ const SchemeObj = {
         type: String,
         require: true,
         default: 'https://images.pexels.com/photos/953864/pexels-photo-953864.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-    }]
+    }],
+    userEmail:{type:String}
 
 }
 

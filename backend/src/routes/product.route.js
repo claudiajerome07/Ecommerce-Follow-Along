@@ -4,9 +4,10 @@ const upload = multer({ dest: 'temp-uploads/' })
 const router = express.Router()
 
 const { createProductController, getProductDataController,updateProductController,getSingleProductDocumentController,deleteSingleProductController } = require('../controller/Product.Controller.js')
+const verifyUser=require('../middlewares/jwt-verify.js')
 
 
-router.post('/create-product', upload.array('files', 5), createProductController)
+router.post('/create-product', upload.array('files', 5), verifyUser,createProductController)
 
 router.get('/get-products', getProductDataController);
 

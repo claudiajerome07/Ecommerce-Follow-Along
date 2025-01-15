@@ -4,10 +4,9 @@ import HomePage from './pages/Homepage.jsx';
 import SingleProductPage from './pages/SingleProductPage.jsx';
 
 
-
-
 import Signup from './pages/Signup.jsx'
 import Login from './pages/Login.jsx';
+
 
 import UpdateForm from './pages/UpdateForm';
 import ProductEntryPage from './pages/ProductEntryPage';

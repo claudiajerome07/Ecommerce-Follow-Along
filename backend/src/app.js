@@ -6,6 +6,7 @@ if (process.env.NODE_ENV !== 'PRODUCTION') {
 
 const express=require('express');
 const cors=require('cors')
+const cookieParser=require('cookie-parser')
 
 
 const app=express();
@@ -14,6 +15,7 @@ const productRouter=require('./routes/product.route.js')
 
 app.use(express.json())
 app.use(cors())
+app.use(cookieParser())
 
 app.get('/',(req,res)=>{
     return res.send('heyy there!')

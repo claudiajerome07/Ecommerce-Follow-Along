@@ -27,7 +27,7 @@ function ProductEntryPage() {
 
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
 
         console.log(formdata)
@@ -45,8 +45,9 @@ function ProductEntryPage() {
         formdataBody.append('discountedPrice', discountedPrice)
         formdataBody.append('originalPrice', originalPrice)
         formdataBody.append('quantity', quantity),
-            formdataBody.append('rating', rating)
+        formdataBody.append('rating', rating)
         formdataBody.append('category', category)
+        formdataBody.append('token',localStorage.getItem('token'))
 
 
         imgs.map((element, index) => {
