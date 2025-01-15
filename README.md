@@ -182,5 +182,19 @@ Began by installing these packages and initialising project:
 3. Adds a delete button to each product card.
 4. Sends a request to the backend to delete the product when the delete button is clicked.
 
+## Milestone 15:
+
+1. Home: Links to the homepage of the application.
+2. My Products: Links to the page displaying all the user's products.
+3. Add Product: Links to the page where a new product can be added.
+4. Cart: Links to the user's shopping cart.
+
+## Milestone 16:
+
+1. Product Display : 
+    - View detailed product information, including name, price, and description.
+    - Display images of the product.
+
+
 ** thank you **
 ~
