@@ -3,6 +3,7 @@ const cloudinary = require('../utilis/cloudinary.js')
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/' });
 const ProductModel = require('../model/productModel.js');
+const { verify } = require('crypto');
 // const productModel = require('../model/productModel.js');
 
 
@@ -34,7 +35,8 @@ const createProductController = async (req, res) => {
             quantity,
             category,
             rating,
-            Imgs: dataImgs
+            Imgs: dataImgs,
+            userEmail:req.useEmailAddress
         })
 
         return res.status(201).send({
@@ -51,7 +53,7 @@ const createProductController = async (req, res) => {
                 success: false
             })
         }
-        res.status(500).send({ message: error.message, success: false })
+        res.status(500).send({ message: error, success: false })
     }
 }
 
@@ -60,7 +62,7 @@ const getProductDataController = async (req, res) => {
         const data = await ProductModel.find()
         return res.status(200).send({ data, message: 'Data fetched Successfully', success: true })
     } catch (err) {
-        return res.status(500).send({ message: err.message, success: false })
+        return res.status(500).send({ message: err, success: false })
     }
 
 }
@@ -145,7 +147,7 @@ const getSingleProductDocumentController = async (req, res) => {
         }
         return res.status(200).send({ message: "Product Fetched Successfully", data, success: true })
     } catch (err) {
-        return res.status(200).send({ message: err.message })
+        return res.status(500).send({ message: err.message })
     }
 }
 
@@ -164,7 +166,7 @@ const deleteSingleProductController = async (req, res) => {
         const newData = await ProductModel.find()
         return res.status(200).send({ message: "Product Fetched Successfully", newDatadata, success: true })
     } catch (err) {
-        return res.status(200).send({ message: err.message, success: false })
+        return res.status(500).send({ message: err.message, success: false })
     }
 }
 

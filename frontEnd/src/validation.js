@@ -42,7 +42,7 @@ const Validation = {
             return { isValid: false, error: 'Email is too long' }
         }
 
-        if (emailRegex.text(email) == false) {
+        if (emailRegex.test(email) == false) {
             return 'Write the email in correct format name@example.com'
         }
         return true
