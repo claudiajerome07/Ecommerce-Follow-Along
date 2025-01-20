@@ -195,6 +195,20 @@ Began by installing these packages and initialising project:
     - View detailed product information, including name, price, and description.
     - Display images of the product.
 
+## Milestone 17: 
+1. Cart Schema
+
+    - Define a schema that will store products in the cart. The schema should include fields such as:
+
+        1. Product ID.
+        2. Quantity.
+        3. user Id.
+
+2. API Endpoint
+
+    - Endpoint: Add Product to Cart.
+
+
 
 ** thank you **
 ~

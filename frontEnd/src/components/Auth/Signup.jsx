@@ -27,10 +27,11 @@ function SignupForm() {
                 [name]: value,
             })
         }
-        setData({
-            ...data,
-            [name]:value
-        })
+        // setData({
+        //     ...data,
+        //     [name]: value,
+        // })
+        
         console.log(data)
     }
 
@@ -57,8 +58,8 @@ function SignupForm() {
         formDataBody.append('file',data.file)
 
         try{
-            await axios.post(`http://localhos:8080/user/signup`,formDataBody,{
-                Headers:{
+            await axios.post('http://localhost:8080/user/signup',formDataBody,{
+                headers:{
                     'Content-Type': 'multipart/form-data',
                 }
             })

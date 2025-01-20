@@ -5,17 +5,30 @@ import axios from "axios";
 
 function Card({ title, index, image, originalPrice, discountedPrice, description, rating,id ,handleDelete}) {
 
-  
+  const handleAddToCart=async()=>{
+    const token=localStorage.getItem('token')
+    console.log(token)
+    try {
+      const response=await axios.post(`http://localhost:8080/cart/add-to-cart?token=${token}`,{productId:id,quantity:1})
+      console.log('Product added to cart')
+    }
+    catch (error) {
+      alert(error.message);
+      console.log(error.message)
+    }
+  }
 
   return (
     <div className="w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
       {/* Image Container */}
       <div className="relative">
-        <img
-          src={image}
-          alt="Product"
-          className="w-full h-48 object-cover"
-        />
+        <Link to={`/product-details/${id}`}>
+          <img
+            src={image}
+            alt="Product"
+            className="w-full h-48 object-cover"
+          />
+        </Link>
         <span className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-semibold">
           {rating}
         </span>
@@ -46,7 +59,7 @@ function Card({ title, index, image, originalPrice, discountedPrice, description
               {originalPrice}
             </span>
           </div>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+          <button onClick={handleAddToCart} className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
             Add to Cart
           </button>
           <Link to={`/update-products/${id}`}>
