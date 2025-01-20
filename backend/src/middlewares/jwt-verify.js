@@ -1,5 +1,6 @@
 const jwt=require('jsonwebtoken')
 const { patch } = require('../app')
+const { query } = require('express')
 
 if(process.env.NODE!=='PRODUCTION'){
     require('dotenv').config({
@@ -8,13 +9,17 @@ if(process.env.NODE!=='PRODUCTION'){
     
 }
 
-const verifyUser=(err,req,res,next)=>{
-    if(req.body.token){
+const verifyUser=(req,res,next)=>{
+    const {token}=req.query
+    // console.log(token)
+    if(!token){
         return res.status(404).send({message:'Send Token over request'})
     }
 
-    const data=jwt.verify(req.body.token,process.env.SECRET_KEY);
+    const data=jwt.verify(token,process.env.SECRET_KEY)
     req.userEmailAddress=data.email;
+    console.log()
+    req.UserId=data.id
     next();
 }
 

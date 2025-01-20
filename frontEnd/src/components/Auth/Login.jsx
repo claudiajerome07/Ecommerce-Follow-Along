@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { data, Link,useNavigate } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 
 function LoginPage() {
     const [details, setdetails] = useState({
@@ -10,17 +10,18 @@ function LoginPage() {
     const navigate = useNavigate();
     const handlechange=(e)=>{
         const {name,value}=e.target;
-        console.log(value)
+        console.log(name,value)
         setdetails({
             ...details,
             [name]:value
         })
     }
-    const handlelogin= async()=>{
+    const handlelogin= async(e)=>{
+        e.preventDefault()
         // need to do axios request to backend
-        const response = await axios.post(`http://localhost:8080/user/login`);
+        const response = await axios.post(`http://localhost:8080/user/login`,details);
         localStorage.setItem('token',response.data.token);
-        console.log(data)
+        console.log(response)
         navigate('/');
     }
     return (

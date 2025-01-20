@@ -28,7 +28,7 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
         <Route path='/product-entry-page' element={<ProductEntryPage />} />
-
+        
         <Route path='/update-products/:id' element={<UpdateForm />} />
         <Route path="/product-details/:id" element={<SingleProductPage/>}/>
       </Routes>

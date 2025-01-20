@@ -14,7 +14,7 @@ const SchemeObj = {
         type: Number,
         default: 1
     },
-    discountPrice: {
+    discountedPrice: {
         type: Number,
         required: true
     },
@@ -37,7 +37,7 @@ const SchemeObj = {
         require: true,
         default: 'https://images.pexels.com/photos/953864/pexels-photo-953864.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
     }],
-    userEmail:{type:String}
+    userEmail: { type: String }
 
 }
 

@@ -4,8 +4,8 @@ const transporter = require('../utilis/sendMail.js')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const { url } = require('../utilis/cloudinary.js')
-const cloudinary=require('../utilis/cloudinary.js')
-const fs=require('fs')
+const cloudinary = require('../utilis/cloudinary.js')
+const fs = require('fs')
 require('dotenv').config({
     path: '..config/.env'
 })
@@ -58,7 +58,7 @@ async function CreateUser(req, res) {
 }
 
 const generateToken = (data) => {
-    const token = jwt.sign({ name: data.name, email: data.email }, process.env.SECRET_KEY)
+    const token = jwt.sign({ name: data.name, email: data.email, id: data.id }, process.env.SECRET_KEY)
     return token
 }
 
@@ -67,7 +67,7 @@ async function verifyUserController(req, res) {
     const { token } = req.params
     try {
         if (verifyUser(token)) {
-            return res.status(200).cookie('token',token).json({token,success:true})
+            return res.status(200).cookie('token', token).json({ token, success: true })
 
         }
         return res.status(403).send({ message: 'token expired' })
@@ -87,6 +87,7 @@ const verifyUser = (token) => {
 
 const signup = async (req, res) => {
     const { name, email, password } = req.body
+    console.log(req.body)
     try {
         const checkUserPresentDB = await usermodel.findOne({ email: email });
         if (checkUserPresentDB) {
@@ -106,28 +107,28 @@ const signup = async (req, res) => {
 
         bcrypt.hash(password, 10, async function (err, hashed) {
             try {
-                if(err){
-                    return res.status(403).send({message:err.message})
+                if (err) {
+                    return res.status(403).send({ message: err.message })
                 }
                 await usermodel.create({
-                    Name:name,
+                    Name: name,
                     email,
-                    password:hashed,
-                    avatr:{
-                        url:ImageAddress,
-                        public_id:`${email}_public_id`,
+                    password: hashed,
+                    avatr: {
+                        url: ImageAddress,
+                        public_id: `${email}_public_id`,
                     }
                 })
 
-                return res.status(201).send({message:'User created Successfully!'})
+                return res.status(201).send({ message: 'User created Successfully!' })
             }
             catch (er) {
                 return res.status(500).send({ message: er.message })
             }
         })
-        
 
-    } 
+
+    }
     catch (err) {
         return res.status(500).send({ message: err.message })
     }
@@ -140,7 +141,7 @@ const login = async (req, res) => {
         const checkUserPresentDB = await usermodel.findOne({ email: email })
         bcrypt.compare(password, checkUserPresentDB.password, function (err, result) {
             if (err) {
-                return res.status(403).send({ message: err.message,success:false })
+                return res.status(403).send({ message: err.message, success: false })
             }
             let data = {
                 id: checkUserPresentDB._id,
@@ -148,15 +149,15 @@ const login = async (req, res) => {
                 password: checkUserPresentDB.password
             }
             const token = generateToken(data)
-            return res.status(200).cookie('token', token).send({ message: "User logged in Successfully!", success: true })
+            return res.status(200).cookie('token', token).send({ message: "User logged in Successfully!", success: true, token })
         })
-       
+
     } catch (err) {
-        return res.status(403).send({message:err.message,success:false})
+        return res.status(403).send({ message: err.message, success: false })
     }
 }
 
-module.exports = { CreateUser, verifyUserController, signup, login,verifyUser }
+module.exports = { CreateUser, verifyUserController, signup, login, verifyUser }
 
 
 //find gives list of object
