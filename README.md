@@ -208,7 +208,15 @@ Began by installing these packages and initialising project:
 
     - Endpoint: Add Product to Cart.
 
+## Milestone 18:
 
+1. Create an Endpoint to Receive Requests from the Cart Page
+        
+        - This endpoint will handle adding products to the cart or updating the quantity of existing products.
+
+2. Create an Endpoint to Fetch All Products in the Cart for a User
+
+        - This endpoint retrieves all cart items for a user based on their email address.
 
 ** thank you **
 ~
