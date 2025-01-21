@@ -175,6 +175,7 @@ Began by installing these packages and initialising project:
 4. Clicking the edit button opens a form pre-filled with the current product data.
 5. Allows users to edit the form and save changes.
 
+
 ## Milestone 14:
 
 1. A new API endpoint to handle deletion of a product from MongoDB.
@@ -217,6 +218,7 @@ Began by installing these packages and initialising project:
 2. Create an Endpoint to Fetch All Products in the Cart for a User
 
         - This endpoint retrieves all cart items for a user based on their email address.
+
 
 ** thank you **
 ~
