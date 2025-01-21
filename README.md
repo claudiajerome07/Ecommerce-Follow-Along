@@ -168,11 +168,57 @@ Began by installing these packages and initialising project:
 5. Display the products dynamically using the ProductCard component.
 
 ## Milestone 13:
+
 1. A new API endpoint to handle data updates in MongoDB.
 2. Receives data via HTTP requests and updates the corresponding record in the database.
 3. Adds an edit button to each product card.
 4. Clicking the edit button opens a form pre-filled with the current product data.
 5. Allows users to edit the form and save changes.
+
+
+## Milestone 14:
+
+1. A new API endpoint to handle deletion of a product from MongoDB.
+2. Accepts the product ID as a parameter.
+3. Adds a delete button to each product card.
+4. Sends a request to the backend to delete the product when the delete button is clicked.
+
+## Milestone 15:
+
+1. Home: Links to the homepage of the application.
+2. My Products: Links to the page displaying all the user's products.
+3. Add Product: Links to the page where a new product can be added.
+4. Cart: Links to the user's shopping cart.
+
+## Milestone 16:
+
+1. Product Display : 
+    - View detailed product information, including name, price, and description.
+    - Display images of the product.
+
+## Milestone 17: 
+1. Cart Schema
+
+    - Define a schema that will store products in the cart. The schema should include fields such as:
+
+        1. Product ID.
+        2. Quantity.
+        3. user Id.
+
+2. API Endpoint
+
+    - Endpoint: Add Product to Cart.
+
+## Milestone 18:
+
+1. Create an Endpoint to Receive Requests from the Cart Page
+        
+        - This endpoint will handle adding products to the cart or updating the quantity of existing products.
+
+2. Create an Endpoint to Fetch All Products in the Cart for a User
+
+        - This endpoint retrieves all cart items for a user based on their email address.
+
 
 ** thank you **
 ~
