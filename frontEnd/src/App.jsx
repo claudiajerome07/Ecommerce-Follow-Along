@@ -7,7 +7,7 @@ import SingleProductPage from './pages/SingleProductPage.jsx';
 import Signup from './pages/Signup.jsx'
 import Login from './pages/Login.jsx';
 import CartPage from './pages/CartPage.jsx';
-
+import ProfilePage from './pages/Profile.jsx';
 import UpdateForm from './pages/UpdateForm';
 import ProductEntryPage from './pages/ProductEntryPage';
 
@@ -32,6 +32,7 @@ function App() {
         <Route path='/update-products/:id' element={<UpdateForm />} />
         <Route path="/product-details/:id" element={<SingleProductPage/>}/>
         <Route path="/cart" element={<CartPage/>} />
+        <Route path="/profile" element={<ProfilePage/>} />
       </Routes>
     </>
   )

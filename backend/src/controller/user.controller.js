@@ -9,6 +9,7 @@ const fs = require('fs')
 require('dotenv').config({
     path: '..config/.env'
 })
+const mongoose=require('mongoose')
 
 async function CreateUser(req, res) {
     const { Name, email, password } = req.body;
@@ -157,7 +158,26 @@ const login = async (req, res) => {
     }
 }
 
-module.exports = { CreateUser, verifyUserController, signup, login, verifyUser }
+const getUserData=async(req,res)=>{
+    const userId=req.UserId;
+
+    try{
+        if(!mongoose.Types.ObjectId.isValid(userId)){
+            return res.status(404).send({message:"Send Valid User Id",success:false})
+        }
+
+        const checkUserPresentinDB=await usermodel.findById({_id:userId});
+        if(!checkUserPresentinDB){
+            return res.status(401).send({message:"Please Signup, user not present"})
+        }
+
+        return res.status(200).send({data:checkUserPresentinDB})
+    }catch(err){
+        return res.status(500).send({message:err.message})
+    }
+}
+
+module.exports = { CreateUser, verifyUserController, signup, login, verifyUser,getUserData }
 
 
 //find gives list of object

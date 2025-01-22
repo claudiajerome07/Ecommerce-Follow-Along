@@ -1,9 +1,10 @@
 const express = require('express');
 // const  model = require('mongoose');
-const {CreateUser , verifyUserController,signup,login} = require('../controller/user.controller.js')
+const {CreateUser , verifyUserController,signup,login,getUserData} = require('../controller/user.controller.js')
 const upload = require('../middlewares/multer.js')
 const jwt=require('jsonwebtoken')
 const router = express.Router();
+const verifyUser=require('../middlewares/jwt-verify.js')
 
 const productrouter=require('./product.route.js')
 
@@ -12,6 +13,8 @@ router.get('/activation/:token',verifyUserController)
 
 router.post("/signup",upload.single('file'),signup)
 router.post("/login",login)
+
+router.get('/user-data',verifyUser,getUserData)
 
 module.exports = router;
 

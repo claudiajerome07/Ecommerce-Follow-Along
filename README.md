@@ -234,6 +234,22 @@ Began by installing these packages and initialising project:
 
         - This includes retrieving the list of products added to the user's cart, along with their respective quantities and prices.
 
+## Milestone 20:
+
+1. Backend Endpoint
+
+    - Create an endpoint to fetch user data, including profile details and address information.
+
+2. Frontend Profile Page
+
+    - Display user profile information such as photo, name, and email.
+
+    - Provide a separate section for address details with an option to add an address.
+
+    - Display "No address found" if the user has no saved addresses.
+
+
+
 
 ** thank you **
-~
+
