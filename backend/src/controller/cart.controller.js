@@ -36,18 +36,18 @@ async function AddToCartController(req, res) {
 }
 
 async function GetProductForUser(req, res) {
-    const UserId = req.UserId;
+    const userId = req.UserId;
 
     try {
-        if (!mongoose.Types.ObjectId.isValid(UserId)) {
+        if (!mongoose.Types.ObjectId.isValid(userId)) {
             return res.status(401).send({ message: 'Unauthorised Please Signup', success: false })
         }
-        const checkUserpresent = await usermodel.findOne({ _id: UserId })
+        const checkUserpresent = await usermodel.findOne({ _id: userId })
         if (!checkUserpresent) {
             return res.status(401).send({ message: 'Unathuroised Please signup', success: false })
         }
 
-        const data = await cartModel.find({ userId: UserId })
+        const data = await cartModel.find({ userId }).populate('productId')
         console.log(data)
         return res.status(200).send({
             message: "Data is successfully fetched",
