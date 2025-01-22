@@ -219,6 +219,21 @@ Began by installing these packages and initialising project:
 
         - This endpoint retrieves all cart items for a user based on their email address.
 
+## Milestone 19:
+1. Added Cart UI
+
+        - The cart UI has been designed and implemented as part of the frontend functionality.
+
+        - The cart page displays all products retrieved from the backend in a structured and user-friendly layout.
+
+        - For each product, users can view the product name, price, and current quantity.
+    
+2. Fetched Cart Details of the User
+
+        - The cart details for the logged-in user are fetched from the backend API.
+
+        - This includes retrieving the list of products added to the user's cart, along with their respective quantities and prices.
+
 
 ** thank you **
 ~
