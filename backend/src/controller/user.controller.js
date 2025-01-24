@@ -175,9 +175,39 @@ const getUserData=async(req,res)=>{
     }catch(err){
         return res.status(500).send({message:err.message})
     }
+
+    
 }
 
-module.exports = { CreateUser, verifyUserController, signup, login, verifyUser,getUserData }
+const AddAddressController = async (req, res) => {
+    const userId = req.UserId;
+    const { city, country, address1, address2, zipCode, addressType } = req.body
+
+    try {
+        const userFindOne = await usermodel.findOne({ _id: userId });
+
+        if (!userFindOne) {
+            return res.status(404).send({ message: "user not found", success: false })
+        }
+
+        const userAddress = {
+            country,
+            city,
+            address1,
+            address2,
+            zipCode,
+            addressType
+        }
+
+        userFindOne.address.push(userAddress)
+        const response = await userFindOne.save()
+        return res.status(201).send({ message: "user address added", success: true, response })
+    } catch (err) {
+        return res.status(500).send({ message: err.message })
+    }
+}
+
+module.exports = { CreateUser, verifyUserController, signup, login, verifyUser,getUserData,AddAddressController }
 
 
 //find gives list of object
