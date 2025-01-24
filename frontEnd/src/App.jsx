@@ -10,7 +10,7 @@ import CartPage from './pages/CartPage.jsx';
 import ProfilePage from './pages/Profile.jsx';
 import UpdateForm from './pages/UpdateForm';
 import ProductEntryPage from './pages/ProductEntryPage';
-
+import AddressCard from './components/AddressComp/AddressCard.jsx';
 import Navbar from './components/navbar/Navbar.jsx';
 
 
@@ -33,6 +33,7 @@ function App() {
         <Route path="/product-details/:id" element={<SingleProductPage/>}/>
         <Route path="/cart" element={<CartPage/>} />
         <Route path="/profile" element={<ProfilePage/>} />
+        <Route path="/address" element={<AddressCard/>}/>
       </Routes>
     </>
   )
