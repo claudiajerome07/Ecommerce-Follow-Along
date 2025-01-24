@@ -19,7 +19,7 @@ async function AddToCartController(req, res) {
             return res.status(401).send({ message: 'Unathuroised Please signup', success: false })
         }
 
-        const checkIfProductPresent = await cartModel.findOne({ productId: productId })
+        const checkIfProductPresent = await cartModel.findOne({ productId: productId, userId })
         if (checkIfProductPresent) {
             return res.status(400).send({ message: 'Product Already present in cart', success: false })
         }
@@ -46,8 +46,9 @@ async function GetProductForUser(req, res) {
         if (!checkUserpresent) {
             return res.status(401).send({ message: 'Unathuroised Please signup', success: false })
         }
+        console.log(userId)
 
-        const data = await cartModel.find({ userId }).populate('productId')
+        const data = await cartModel.find({ userId: checkUserpresent._id }).populate('productId')
         console.log(data)
         return res.status(200).send({
             message: "Data is successfully fetched",

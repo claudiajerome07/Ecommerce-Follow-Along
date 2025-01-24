@@ -3,17 +3,20 @@ import axios from "axios";
 // import { Link, NavLink } from "react-router-dom";
 
 
-function Card({ title, index, image, originalPrice, discountedPrice, description, rating,id ,handleDelete}) {
+function Card({ title, index, image, originalPrice, discountedPrice, description, rating, id, handleDelete }) {
 
-  const handleAddToCart=async()=>{
-    const token=localStorage.getItem('token')
+  const handleAddToCart = async () => {
+    const token = localStorage.getItem('token')
     console.log(token)
     try {
-      const response=await axios.post(`http://localhost:8080/cart/add-to-cart?token=${token}`,{productId:id,quantity:1})
+      if (!token) {
+        return alert("Please Login")
+      }
+      const response = await axios.post(`http://localhost:8080/cart/add-to-cart?token=${token}`, { productId: id, quantity: 1 })
       console.log('Product added to cart')
     }
     catch (error) {
-      alert(error.message);
+      alert(error.response.message);
       console.log(error.message)
     }
   }
@@ -69,8 +72,8 @@ function Card({ title, index, image, originalPrice, discountedPrice, description
           </Link>
 
 
-          <button onClick={() => handleDelete(id)}  className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
-            
+          <button onClick={() => handleDelete(id)} className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+
             Delete
           </button>
         </div>

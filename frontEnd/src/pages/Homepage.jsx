@@ -36,7 +36,7 @@ function HomePage() {
                 {data?.map((ele, index) => {
                     return (
                         <div key={index} style={{ margin: 'auto' }}>
-                        <Link to={`/product-details/${ele._id}`}>
+                        {/* <Link to={`/product-details/${ele._id}`}> */}
                             <Card title={ele.title}
                                 image={ele.Imgs[0] ? ele.Imgs[0] : 'Product Image missing'}
                                 index={index}
@@ -48,7 +48,7 @@ function HomePage() {
                                 id={ele._id}
                                 handleDelete={handleDelete}
                             />
-                        </Link>
+                        {/* </Link> */}
                         </div>
                     );
                 })}

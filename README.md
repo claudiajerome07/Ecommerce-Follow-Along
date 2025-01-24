@@ -256,6 +256,15 @@ Began by installing these packages and initialising project:
 
 2. State Management: Utilizes useState to store the address data inputted by the user.
 
+## Milestone 22:
+
+1. Address Submission: Receives address data from the frontend (via HTTP POST request).
+
+
+2. Database Storage: Adds the received address to an array inside the user collection in the database.
+
+
+3. Address Array: Each user document will have an array of addresses, allowing multiple addresses to be stored per user.
 
 ** thank you **
 

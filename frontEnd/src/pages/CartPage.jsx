@@ -24,16 +24,16 @@ function CartPage(){
                 return (
                     <div key={index}>
                         <CartCard 
-                            title={singleCartObject.productId.title}
-                            image={singleCartObject.productId.Imgs[0]}
+                            title={singleCartObject?.productId?.title}
+                            image={singleCartObject?.productId?.Imgs[0]}
                             // index={index}
-                            description={singleCartObject.productId.description}
-                            stockPrice={singleCartObject.productId.stockPrice}
-                            originalPrice={singleCartObject.productId.originalPrice}
-                            discountedPrice={singleCartObject.productId.discountedPrice}
-                            rating={singleCartObject.productId.rating}
-                            id={singleCartObject._id}
-                            createdBy={singleCartObject.userId}
+                            description={singleCartObject?.productId?.description}
+                            stockPrice={singleCartObject?.productId?.stockPrice}
+                            originalPrice={singleCartObject?.productId?.originalPrice}
+                            discountedPrice={singleCartObject?.productId?.discountedPrice}
+                            rating={singleCartObject?.productId?.rating}
+                            id={singleCartObject?._id}
+                            createdBy={singleCartObject?.userId}
                         
                         />
                     </div>
