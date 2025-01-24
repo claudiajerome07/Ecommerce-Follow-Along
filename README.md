@@ -254,7 +254,7 @@ Began by installing these packages and initialising project:
 1. User Input: Collects address details such as Address Line 1, Address Line 2, City, Country, Zip Code, and Address Type (Home, Office, Other).
 
 
-2. State Management: Utilizes useState to store the address data inputted by the user
+2. State Management: Utilizes useState to store the address data inputted by the user.
 
 
 ** thank you **
