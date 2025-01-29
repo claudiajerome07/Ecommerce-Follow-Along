@@ -1,10 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import CartCard from "../components/ProductCard/CartCard"
+import { Link } from "react-router-dom"
 
-
-function CartPage(){
-    const [UsersCartData,setUsersCartdata] = useState([])
+function CartPage() {
+    const [UsersCartData, setUsersCartdata] = useState([])
     useEffect(() => {
         const getCartData = async () => {
             const token = localStorage.getItem('token')
@@ -19,11 +19,13 @@ function CartPage(){
     }, [])
     return (
         <div>
-
-            {UsersCartData?.map((singleCartObject,index)=>{
+            <Link to={`/select-address`}>
+                <button className="bg-slate-800 color-white px-5 py-2 rounded-md ml-40">Checkout</button>
+            </Link>
+            {UsersCartData?.map((singleCartObject, index) => {
                 return (
                     <div key={index}>
-                        <CartCard 
+                        <CartCard
                             title={singleCartObject?.productId?.title}
                             image={singleCartObject?.productId?.Imgs[0]}
                             // index={index}
@@ -34,16 +36,16 @@ function CartPage(){
                             rating={singleCartObject?.productId?.rating}
                             id={singleCartObject?._id}
                             createdBy={singleCartObject?.userId}
-                        
+
                         />
                     </div>
                 )
             })}
-            
+
 
         </div>
     )
-    
+
 }
 
 export default CartPage
