@@ -1,6 +1,7 @@
 import {X,ArrowDown,RotateCcw} from 'lucide-react'
 import { Link } from 'react-router-dom'
-function CartCard({title, Index, image, originalPrice, discountedPrice, description, rating, id,createdBy}){
+function CartCard({title, Index, images, originalPrice, discountedPrice, description, rating, id,createdBy}){
+    
     return (
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow p-4">
             <div className="flex gap-6">
@@ -8,7 +9,7 @@ function CartCard({title, Index, image, originalPrice, discountedPrice, descript
                 <div className="relative w-64">
                     <Link to={`product-details/${id}`}>
                         <img
-                            src={image}
+                            src={typeof images == 'string' ? images : images[0]}
                             alt="Product Image"
                             className="rounded-lg object-cover"
                         />

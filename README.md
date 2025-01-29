@@ -287,6 +287,36 @@ Began by installing these packages and initialising project:
     - Assumes authentication and user ID extraction from the request.
 
 
+## Milestone 24
+
+1. Place Order Button in Cart Page
+
+    - Added a "Place Order" button inside the Cart Page.
+
+    - When clicked, it navigates the user to the Select Address page to choose a delivery address.
+
+2. Select Address Page
+
+    - Displays all available addresses of the user.
+
+    - Allows the user to select one address and proceed.
+
+3. Order Confirmation Page
+
+    - Displays all the products the user is ordering.
+
+    - Shows the selected delivery address.
+
+    - Displays the total value of the cart.
+
+    - Includes a "Place Order" button at the bottom to confirm the purchase.
+
+4. Backend API Endpoint to Fetch User Addresses
+
+    - Provides a list of all addresses associated with a user.
+
+    - Assumes authentication and user ID extraction from the request.
+
 
 ** thank you **
 

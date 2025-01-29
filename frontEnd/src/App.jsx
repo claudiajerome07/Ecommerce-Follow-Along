@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Homepage.jsx';
 
 import SingleProductPage from './pages/SingleProductPage.jsx';
-
+import OrderConfirmationPage from './pages/OrderConfirmationPage.jsx';
 import SelectAddressPage from './pages/SelectAddressPage.jsx';
 import Signup from './pages/Signup.jsx'
 import Login from './pages/Login.jsx';
@@ -35,6 +35,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage/>} />
         <Route path="/address" element={<AddressCard/>}/>
         <Route path='/select-address' element={<SelectAddressPage/>}/>
+        <Route path='/order-confirmation' element={<OrderConfirmationPage/>}/>
       </Routes>
     </>
   )
