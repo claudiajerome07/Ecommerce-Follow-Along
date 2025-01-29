@@ -27,7 +27,7 @@ function CartPage() {
                     <div key={index}>
                         <CartCard
                             title={singleCartObject?.productId?.title}
-                            image={singleCartObject?.productId?.Imgs[0]}
+                            images={singleCartObject?.productId?.Imgs[0]}
                             // index={index}
                             description={singleCartObject?.productId?.description}
                             stockPrice={singleCartObject?.productId?.stockPrice}
