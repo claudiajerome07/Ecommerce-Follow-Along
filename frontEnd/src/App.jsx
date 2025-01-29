@@ -3,7 +3,7 @@ import HomePage from './pages/Homepage.jsx';
 
 import SingleProductPage from './pages/SingleProductPage.jsx';
 
-
+import SelectAddressPage from './pages/SelectAddressPage.jsx';
 import Signup from './pages/Signup.jsx'
 import Login from './pages/Login.jsx';
 import CartPage from './pages/CartPage.jsx';
@@ -34,6 +34,7 @@ function App() {
         <Route path="/cart" element={<CartPage/>} />
         <Route path="/profile" element={<ProfilePage/>} />
         <Route path="/address" element={<AddressCard/>}/>
+        <Route path='/select-address' element={<SelectAddressPage/>}/>
       </Routes>
     </>
   )

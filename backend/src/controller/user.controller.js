@@ -9,7 +9,7 @@ const fs = require('fs')
 require('dotenv').config({
     path: '..config/.env'
 })
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 
 async function CreateUser(req, res) {
     const { Name, email, password } = req.body;
@@ -158,25 +158,25 @@ const login = async (req, res) => {
     }
 }
 
-const getUserData=async(req,res)=>{
-    const userId=req.UserId;
+const getUserData = async (req, res) => {
+    const userId = req.UserId;
 
-    try{
-        if(!mongoose.Types.ObjectId.isValid(userId)){
-            return res.status(404).send({message:"Send Valid User Id",success:false})
+    try {
+        if (!mongoose.Types.ObjectId.isValid(userId)) {
+            return res.status(404).send({ message: "Send Valid User Id", success: false })
         }
 
-        const checkUserPresentinDB=await usermodel.findById({_id:userId});
-        if(!checkUserPresentinDB){
-            return res.status(401).send({message:"Please Signup, user not present"})
+        const checkUserPresentinDB = await usermodel.findById({ _id: userId });
+        if (!checkUserPresentinDB) {
+            return res.status(401).send({ message: "Please Signup, user not present" })
         }
 
-        return res.status(200).send({data:checkUserPresentinDB})
-    }catch(err){
-        return res.status(500).send({message:err.message})
+        return res.status(200).send({ data: checkUserPresentinDB })
+    } catch (err) {
+        return res.status(500).send({ message: err.message })
     }
 
-    
+
 }
 
 const AddAddressController = async (req, res) => {
@@ -207,7 +207,30 @@ const AddAddressController = async (req, res) => {
     }
 }
 
-module.exports = { CreateUser, verifyUserController, signup, login, verifyUser,getUserData,AddAddressController }
+const getAddressController = async (req, res) => {
+    const userId = req.UserId
+    try {
+        if (!mongoose.Types.ObjectId.isValid(userId)) {
+            return res.status(401).send({ message: "Please login, Un-authorised", success: false })
+        }
+
+        const checkUser = await usermodel.findOne({ _id: userId }, { address: 1 })
+
+        if (!checkUser) {
+            return res.status(401).send({ message: "Please singup, user not present", success: false })
+        }
+
+        return res.status(200).send({
+            userInfo: checkUser,
+            message: 'Success',
+            success: true
+        })
+    } catch (err) {
+        return res.status(500).send({ message: err.message })
+    }
+}
+
+module.exports = { CreateUser, verifyUserController, signup, login, verifyUser, getUserData, AddAddressController, getAddressController }
 
 
 //find gives list of object
