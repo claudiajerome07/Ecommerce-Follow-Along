@@ -327,6 +327,17 @@ This API is designed to handle order processing by receiving product details, us
 
 3. Store the order details in the MongoDB orders collection.
 
+## Milestone 26
+This API is designed to handle order processing by receiving product details, user information, and address details. The API will:
+
+1. Retrieve the user _id based on their email.
+
+2. Create separate orders for each product while using the same address.
+
+3. Store the order details in the MongoDB orders collection.
+
+4. Provide an endpoint to retrieve all orders for a specific user.
+
 
 ** thank you **
 
