@@ -19,31 +19,40 @@ function CartPage() {
     }, [])
     return (
         <div>
-            <Link to={`/select-address`}>
-                <button className="bg-slate-800 color-white px-5 py-2 rounded-md ml-40">Checkout</button>
-            </Link>
-            {UsersCartData?.map((singleCartObject, index) => {
-                return (
-                    <div key={index}>
-                        <CartCard
-                            title={singleCartObject?.productId?.title}
-                            images={singleCartObject?.productId?.Imgs[0]}
-                            // index={index}
-                            description={singleCartObject?.productId?.description}
-                            stockPrice={singleCartObject?.productId?.stockPrice}
-                            originalPrice={singleCartObject?.productId?.originalPrice}
-                            discountedPrice={singleCartObject?.productId?.discountedPrice}
-                            rating={singleCartObject?.productId?.rating}
-                            id={singleCartObject?._id}
-                            createdBy={singleCartObject?.userId}
+            {UsersCartData.length>0?(
+                <div>
+                    <Link to={`/select-address`}>
+                        <button className="bg-slate-800 color-white px-5 py-2 rounded-md ml-40">Checkout</button>
+                    </Link>
+                    {UsersCartData?.map((singleCartObject, index) => {
+                        return (
+                            <div key={index}>
+                                <CartCard
+                                    title={singleCartObject?.productId?.title}
+                                    images={singleCartObject?.productId?.Imgs[0]}
+                                    // index={index}
+                                    description={singleCartObject?.productId?.description}
+                                    stockPrice={singleCartObject?.productId?.stockPrice}
+                                    originalPrice={singleCartObject?.productId?.originalPrice}
+                                    discountedPrice={singleCartObject?.productId?.discountedPrice}
+                                    rating={singleCartObject?.productId?.rating}
+                                    id={singleCartObject?._id}
+                                    createdBy={singleCartObject?.userId}
 
-                        />
-                    </div>
-                )
-            })}
+                                />
+                            </div>
+                        )
+                    })}
 
 
+                </div>
+            ):(
+                <div className="flex justify-center max-h-[100vh] items-center">
+                    <h1>Cart is empty</h1>
+                </div>
+            )}
         </div>
+        
     )
 
 }

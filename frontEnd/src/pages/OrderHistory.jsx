@@ -13,13 +13,25 @@ function OrderHistory() {
             return alert('Please log in, token is missing')
         }
         const response=await axios.get(`http://localhost:8080/orders/user-orders-data?token=${token}`)
-        setOrderedData(response.data.orders)
+        const reversedData=response.data.orders?.reverse()
+        setOrderedData(reversedData)
         console.log(response.data.orders)
     }
 
     useEffect(()=>{
         fetchOrderedProducts()
     },[])
+
+    const handleCancel=async(id)=>{
+        console.log(id);
+        const token=localStorage.getItem('token')
+        if(!token){
+            return alert('Token is missing, Login')
+        }
+
+        await axios.patch(`http://localhost:8080/orders/cancel-order?token=${token}&orderId=${id}`)
+        fetchOrderedProducts()
+    }
   return (
     <div>
           {OrderedData?.map((singleCartObject, index) => {
@@ -37,7 +49,7 @@ function OrderHistory() {
                           id={singleCartObject?._id}
                           orderStatus={singleCartObject.orderStatus}
                           createdBy={singleCartObject?.userId}
-
+                          handleCancel={handleCancel}
                       />
                   </div>
               )
