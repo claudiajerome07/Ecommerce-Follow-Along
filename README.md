@@ -344,6 +344,16 @@ This API is designed to handle order processing by receiving product details, us
 
 2. Displays order details such as product name, quantity, price, and status.
 
+## Milestone 28:
+
+1. Display a Cancel Order button for active orders.
+
+2. If an order is already canceled, hide the button.
+
+3. Provide an API endpoint to cancel an order.
+
+3. Update the order status to "Canceled" in the database.
+
 
 
 ** thank you **
