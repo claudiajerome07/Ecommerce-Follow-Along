@@ -27,6 +27,6 @@ app.get('/',(req,res)=>{
 app.use('/user',userRouter)
 app.use('/product',productRouter)
 app.use('/cart',cartRouter)
-app.use('/orders',OrderRouter)
+app.use('/orders',orderRouter)
 //connecting db and running server 
 module.exports=app;

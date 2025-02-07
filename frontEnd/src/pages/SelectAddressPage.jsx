@@ -17,6 +17,7 @@ function SelectAddressPage() {
             const response = await axios.get(`http://localhost:8080/user/get-addresses?token=${token}`)
             console.log(response.data.userInfo)
             SetAllAddresses(response.data.userInfo.address)
+            
         }
         fetch()
     }, [])

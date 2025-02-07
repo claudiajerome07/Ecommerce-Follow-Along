@@ -338,6 +338,13 @@ This API is designed to handle order processing by receiving product details, us
 
 4. Provide an endpoint to retrieve all orders for a specific user.
 
+## Milestone 27
+
+1. Fetches user orders from the backend API.
+
+2. Displays order details such as product name, quantity, price, and status.
+
+
 
 ** thank you **
 
