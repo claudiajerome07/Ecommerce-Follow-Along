@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Homepage.jsx';
-
+import OrderHistory from './pages/OrderHistory.jsx';
 import SingleProductPage from './pages/SingleProductPage.jsx';
 import OrderConfirmationPage from './pages/OrderConfirmationPage.jsx';
 import SelectAddressPage from './pages/SelectAddressPage.jsx';
@@ -36,6 +36,7 @@ function App() {
         <Route path="/address" element={<AddressCard/>}/>
         <Route path='/select-address' element={<SelectAddressPage/>}/>
         <Route path='/order-confirmation' element={<OrderConfirmationPage/>}/>
+        <Route path='/order-history' element={<OrderHistory/>}/>
       </Routes>
     </>
   )
