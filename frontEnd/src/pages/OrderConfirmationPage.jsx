@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CartCard from '../components/ProductCard/CartCard';
+import { handlePay } from '../utils/razorpay';
 import { useNavigate } from 'react-router-dom';
 function OrderConfirmationPage() {
     const navigate=useNavigate()
@@ -43,6 +44,11 @@ function OrderConfirmationPage() {
 
         })
         navigate('/order-history')
+        handlePay(total, token, cartData)
+            .then((res) => {
+                navigate('/order-history');
+            })
+            .catch((er) => console.log(er.message));
         console.log(response)
     }
     return (
@@ -92,7 +98,7 @@ function OrderConfirmationPage() {
                 </div>
                 <div className="flex justify-center mt-5">
                     <button className="px-5 py-2 rounded-lg bg-blue-500 text-white hover:bg-green-500" onClick={orderConfirmation}>
-                        Confirm order
+                        Confirm order {total}
                     </button>
                 </div>
             </div>
