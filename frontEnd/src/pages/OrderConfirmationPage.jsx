@@ -43,13 +43,14 @@ function OrderConfirmationPage() {
             totalAmount:total,
 
         })
-        navigate('/order-history')
+        
         handlePay(total, token, cartData)
             .then((res) => {
                 navigate('/order-history');
             })
             .catch((er) => console.log(er.message));
         console.log(response)
+        navigate('/order-history')
     }
     return (
         <div>
