@@ -355,6 +355,39 @@ This API is designed to handle order processing by receiving product details, us
 3. Update the order status to "Canceled" in the database.
 
 
+## Milestone 29:
 
+1. Create a PayPal Developer Account
+
+    - Go to the PayPal Developer Dashboard.
+
+    - Sign in or create an account if you don't already have one.
+
+2. Access Sandbox Accounts
+
+    - Once logged in, navigate to the Sandbox Accounts section.
+
+    - Here, you will find test accounts created for development purposes.
+
+    - Copy the User ID of the sandbox account and save it for later use.
+
+3. Obtain PayPal Client ID
+
+    - In the Sandbox Accounts section, locate your sandbox account.
+
+    - Copy the Client ID and save it securely, as it is needed for API integration.
+
+4. Your order confirmation page should support two payment options:
+
+    - Cash on Delivery (COD)
+
+    - Online Payment via PayPal
+
+5. UI Implementation
+
+    - Create radio buttons to allow users to select between COD and Online Payment.
+
+    - When the user selects Online Payment, dynamically display PayPal payment buttons.
+    
 ** thank you **
 
