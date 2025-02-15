@@ -355,7 +355,7 @@ This API is designed to handle order processing by receiving product details, us
 3. Update the order status to "Canceled" in the database.
 
 
-## Milestone 29:
+## Milestone 29 and 30:
 
 1. Create a PayPal Developer Account
 
