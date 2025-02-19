@@ -4,6 +4,7 @@ import axios from 'axios';
 import CartCard from '../components/ProductCard/CartCard';
 import { handlePay } from '../utils/razorpay';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 function OrderConfirmationPage() {
     const navigate=useNavigate()
     const [cartData, setUsersCartData] = useState([]);
@@ -11,7 +12,8 @@ function OrderConfirmationPage() {
     const [userAddress, setAddress] = useState(
         JSON.parse(localStorage.getItem('address')) || {}
     );
-
+    const data=useSelector((state)=>state.user)
+    
     useEffect(() => {
         const getCartData = async () => {
             const token = localStorage.getItem('token');

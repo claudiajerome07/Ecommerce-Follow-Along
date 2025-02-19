@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios'
+import { useSelector } from "react-redux";
 
 
 
@@ -19,6 +20,7 @@ function ProductEntryPage() {
 
     const [error, setError] = useState('')
     const [imgs, setImgs] = useState(null)
+    const data=useSelector((state)=>state.user)
 
     const handlefileUpload = (e) => {
         const ImageArray = Array.from(e.target.files)
