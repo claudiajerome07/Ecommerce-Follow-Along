@@ -406,5 +406,18 @@ This API is designed to handle order processing by receiving product details, us
 4. Implement the setEmail function inside userActions.js to update the global state.
 
 5. In index.js, wrap the App component inside the Provider component and pass the store as a prop.
+
+## Milestone 32:
+
+1. Login Page:
+
+    - The Dispatch method is used to store the user's email in the global state when they log in.
+
+2. Accessing Email in Other Pages:
+
+    - The stored email is accessed in all remaining pages using useSelector from Redux.
+
+    - This ensures that the email persists across the application without needing to pass props manually.
+    
 ** thank you **
 

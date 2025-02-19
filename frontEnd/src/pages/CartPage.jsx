@@ -2,9 +2,11 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import CartCard from "../components/ProductCard/CartCard"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 function CartPage() {
     const [UsersCartData, setUsersCartdata] = useState([])
+    const data=useSelector((state)=>state.user)
     useEffect(() => {
         const getCartData = async () => {
             const token = localStorage.getItem('token')

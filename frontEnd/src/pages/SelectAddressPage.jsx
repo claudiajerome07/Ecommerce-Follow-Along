@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import AddressList from '../components/AllAddress/Addresses';
+import { useSelector } from 'react-redux';
 
 function SelectAddressPage() {
 
     const [AllAddresses, SetAllAddresses] = useState([])
+    const data=useSelector((state)=>state.user)
 
     useEffect(() => {
         const fetch = async () => {
