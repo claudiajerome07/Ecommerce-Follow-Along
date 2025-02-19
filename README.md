@@ -389,5 +389,22 @@ This API is designed to handle order processing by receiving product details, us
 
     - When the user selects Online Payment, dynamically display PayPal payment buttons.
     
+## Milestone 31:
+
+1. Install the required package:
+
+    - react-redux
+
+2. Create a new folder named store with the following files:
+
+    - store.js: Configures the Redux store and defines the userReducer to handle the global email state.
+
+    - userActions.js: Contains a function called setEmail to update the email in the global state.
+
+3. Configure the Redux store inside store.js and implement the userReducer function to handle the email state.
+
+4. Implement the setEmail function inside userActions.js to update the global state.
+
+5. In index.js, wrap the App component inside the Provider component and pass the store as a prop.
 ** thank you **
 
