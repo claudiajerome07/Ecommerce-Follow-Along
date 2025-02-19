@@ -418,6 +418,16 @@ This API is designed to handle order processing by receiving product details, us
     - The stored email is accessed in all remaining pages using useSelector from Redux.
 
     - This ensures that the email persists across the application without needing to pass props manually.
+
+## Milestone 33:
+
+1. Install jsonwebtoken using NPM.
+
+2.Generate a JWT token using the sign method, including email and ID as payload.
+
+3. Set Expiration Time using maxAge to control token validity.
+
+4. Store the Token in a Cookie and send it in the response to persist authentication
     
 ** thank you **
 
