@@ -58,7 +58,7 @@ function ProductEntryPage() {
 
         console.log(formdataBody)
         const token= localStorage.getItem('token')
-        axios.post(`http://localhost:8080/product/create-product?token=${token}`, formdataBody, {
+        axios.post(`https://ecommerce-follow-along-keha.onrender.com/product/create-product?token=${token}`, formdataBody, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

@@ -436,5 +436,12 @@ This API is designed to handle order processing by receiving product details, us
 2. Middleware verifies JWT tokens before granting access.
 
 3. Authentication is enforced on every page to prevent unauthorized access.
+
+## Milestone 35:
+
+1. Backend deployment Link - https://ecommerce-follow-along-keha.onrender.com
+
+2. Frontend Deployment Link -
+
 ** thank you **
 

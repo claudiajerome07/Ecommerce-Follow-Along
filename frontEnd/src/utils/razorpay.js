@@ -4,7 +4,7 @@ export const handlePay = async (total, token, orderIds) => {
         // create order
         // res->orders[id]
         const createOrdersResponse = await axios.post(
-            'http://localhost:8080/payment/create-order',
+            'https://ecommerce-follow-along-keha.onrender.com/payment/create-order',
             {
                 amount: total,
                 currency: 'INR',
@@ -14,7 +14,7 @@ export const handlePay = async (total, token, orderIds) => {
         // get the keys
         // key_id and key_secret
         const responseKeys = await axios.get(
-            'http://localhost:8080/payment/get-razorpay-key'
+            'https://ecommerce-follow-along-keha.onrender.com/payment/get-razorpay-key'
         );
         // pay order
         // make the payment and create a document
@@ -30,7 +30,7 @@ export const handlePay = async (total, token, orderIds) => {
             order_id: orderId,
             handler: async function (response) {
                 const result = await axios.post(
-                    `http://localhost:8080/payment/pay-order?token=${token}`,
+                    `https://ecommerce-follow-along-keha.onrender.com/payment/pay-order?token=${token}`,
                     {
                         amount: amount,
                         razorpayPaymentId: response.razorpay_payment_id,

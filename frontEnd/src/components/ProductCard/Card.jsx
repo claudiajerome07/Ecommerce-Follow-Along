@@ -12,7 +12,7 @@ function Card({ title, index, image, originalPrice, discountedPrice, description
       if (!token) {
         return alert("Please Login")
       }
-      const response = await axios.post(`http://localhost:8080/cart/add-to-cart?token=${token}`, { productId: id, quantity: 1 })
+      const response = await axios.post(`https://ecommerce-follow-along-keha.onrender.com/cart/add-to-cart?token=${token}`, { productId: id, quantity: 1 })
       console.log('Product added to cart')
     }
     catch (error) {

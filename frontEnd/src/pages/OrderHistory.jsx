@@ -13,7 +13,7 @@ function OrderHistory() {
         if(!token){
             return alert('Please log in, token is missing')
         }
-        const response=await axios.get(`http://localhost:8080/orders/user-orders-data?token=${token}`)
+        const response = await axios.get(`https://ecommerce-follow-along-keha.onrender.com/orders/user-orders-data?token=${token}`)
         const reversedData=response.data.orders?.reverse()
         setOrderedData(reversedData)
         console.log(response.data.orders)
@@ -30,7 +30,7 @@ function OrderHistory() {
             return alert('Token is missing, Login')
         }
 
-        await axios.patch(`http://localhost:8080/orders/cancel-order?token=${token}&orderId=${id}`)
+        await axios.patch(`https://ecommerce-follow-along-keha.onrender.com/orders/cancel-order?token=${token}&orderId=${id}`)
         fetchOrderedProducts()
     }
   return (
