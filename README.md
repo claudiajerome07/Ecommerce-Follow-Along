@@ -441,7 +441,7 @@ This API is designed to handle order processing by receiving product details, us
 
 1. Backend deployment Link - https://ecommerce-follow-along-keha.onrender.com
 
-2. Frontend Deployment Link -
+2. Frontend Deployment Link - https://ecommercewebsiteee.netlify.app/
 
 ** thank you **
 
