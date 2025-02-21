@@ -428,6 +428,13 @@ This API is designed to handle order processing by receiving product details, us
 3. Set Expiration Time using maxAge to control token validity.
 
 4. Store the Token in a Cookie and send it in the response to persist authentication
-    
+
+## Milestone 34:
+
+1.JWT tokens are stored securely in HTTP-only cookies.
+
+2. Middleware verifies JWT tokens before granting access.
+
+3. Authentication is enforced on every page to prevent unauthorized access.
 ** thank you **
 
