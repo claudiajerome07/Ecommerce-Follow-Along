@@ -27,7 +27,7 @@ function ProfileCard() {
                 return alert('Token missing login');
             }
             const response = await axios.get(
-                `http://localhost:8080/user/user-data?token=${token}`
+                `https://ecommerce-follow-along-keha.onrender.com/user/user-data?token=${token}`
             );
             setUserData(response.data.data);
         };

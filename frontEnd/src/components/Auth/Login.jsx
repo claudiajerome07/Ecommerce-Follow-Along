@@ -23,7 +23,7 @@ function LoginPage() {
     const handlelogin= async(e)=>{
         e.preventDefault()
         // need to do axios request to backend
-        const response = await axios.post(`http://localhost:8080/user/login`,details);
+        const response = await axios.post(`https://ecommerce-follow-along-keha.onrender.com/user/login`,details);
         console.log(details)
         dispatch(setUserEmail(details.email))
         localStorage.setItem('token',response.data.token);

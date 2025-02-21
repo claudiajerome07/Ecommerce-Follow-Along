@@ -13,7 +13,7 @@ function CartPage() {
             if (!token) {
                 return alert('token is missing, please Login')
             }
-            const response = await axios.get(`http://localhost:8080/cart/get-user-cart-data?token=${token}`)
+            const response = await axios.get(`https://ecommerce-follow-along-keha.onrender.com/cart/get-user-cart-data?token=${token}`)
             console.log(response)
             setUsersCartdata(response.data.cartData)
         }

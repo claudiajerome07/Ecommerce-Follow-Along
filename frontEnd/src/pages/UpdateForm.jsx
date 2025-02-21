@@ -68,7 +68,7 @@ function UpdateForm() {
         console.log(formdataBody)
 
 
-        let requestData = await axios.put(`http://localhost:8080/product/update-products/${id}`, formdataBody, {
+        let requestData = await axios.put(`https://ecommerce-follow-along-keha.onrender.com/product/update-products/${id}`, formdataBody, {
 
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -115,7 +115,7 @@ function UpdateForm() {
 
     useEffect(() => {
         const getDataForId = async () => {
-            const singleData = await axios.get(`http://localhost:8080/product/get-single/${id}`)
+            const singleData = await axios.get(`https://ecommerce-follow-along-keha.onrender.com/product/get-single/${id}`)
             console.log(singleData)
             setformdata(singleData.data.data)
             setImgs(singleData.data.data.imgs)

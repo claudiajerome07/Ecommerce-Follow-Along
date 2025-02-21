@@ -21,7 +21,7 @@ function OrderConfirmationPage() {
                 return alert('Please login, token is missing');
             }
             const response = await axios.get(
-                `http://localhost:8080/cart/get-user-cart-data?token=${token}`
+                `https://ecommerce-follow-along-keha.onrender.com/cart/get-user-cart-data?token=${token}`
             );
 
             let sum = 0;
@@ -39,7 +39,7 @@ function OrderConfirmationPage() {
     const orderConfirmation=async()=>{
         const token=localStorage.getItem('token')
         console.log(userAddress)
-        const response=await axios.post(`http://localhost:8080/orders/confirm-order?token=${token}`,{
+        const response = await axios.post(`https://ecommerce-follow-along-keha.onrender.com/orders/confirm-order?token=${token}`,{
             Items:cartData,
             address:userAddress,
             totalAmount:total,

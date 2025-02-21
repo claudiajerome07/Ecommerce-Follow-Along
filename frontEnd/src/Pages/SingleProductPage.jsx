@@ -15,7 +15,7 @@ function SinglePageProduct() {
         console.log('here....');
         const getProductSingleDetails = async () => {
             const response = await axios.get(
-                `http://localhost:8080/product/get-single/${id}`
+                `https://ecommerce-follow-along-keha.onrender.com/product/get-single/${id}`
             );
             console.log(response);
             setProduct(response.data.data);

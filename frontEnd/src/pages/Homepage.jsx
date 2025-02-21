@@ -26,7 +26,7 @@ function HomePage() {
     // console.log(data)
     const handleDelete = async (id) => {
         console.log('id', id);
-        const data = await axios.delete(`http://localhost:8080/product/${id}`);
+        const data = await axios.delete(`https://ecommerce-follow-along-keha.onrender.com/product/${id}`);
         setdata(data.data.data);
     };
 

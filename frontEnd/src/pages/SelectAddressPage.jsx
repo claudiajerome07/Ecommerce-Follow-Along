@@ -16,7 +16,7 @@ function SelectAddressPage() {
                 alert('Plaese login, token is missing')
             }
 
-            const response = await axios.get(`http://localhost:8080/user/get-addresses?token=${token}`)
+            const response = await axios.get(`https://ecommerce-follow-along-keha.onrender.com/user/get-addresses?token=${token}`)
             console.log(response.data.userInfo)
             SetAllAddresses(response.data.userInfo.address)
             

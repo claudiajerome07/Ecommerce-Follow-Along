@@ -30,7 +30,7 @@ const AddressCard = () => {
             return alert('token missing')
         }
 
-        const response=await axios.post(`http://localhost:8080/user/add-address?token=${token}`,addressData)
+        const response = await axios.post(`https://ecommerce-follow-along-keha.onrender.com/user/add-address?token=${token}`,addressData)
         navigate('/profile')
 
         // Clear the form fields after submission (optional)
